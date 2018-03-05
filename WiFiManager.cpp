@@ -298,7 +298,8 @@ int WiFiManager::connectWifi(String ssid, String pass)
     DEBUG_WM(WiFi.localIP());
   }
   // Fix for auto connect racing issue
-  if (WiFi.status() == WL_CONNECTED) 
+ //if (WiFi.status() == WL_CONNECTED) 
+  if ((WiFi.status() == WL_CONNECTED) && (WiFi.SSID() == ssid)) 
   {
     DEBUG_WM("Already connected. Bailing out.");
     return WL_CONNECTED;
